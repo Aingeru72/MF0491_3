@@ -2,6 +2,17 @@
 
 nav.navbar-inverse {
     border-radius: 0;
+    .buscador {
+        .glyphicon-search {
+            top: 0;
+        }
+    }
+    a.dropdown-toggle {
+        background-color: #88CC88;
+        .glyphicon-shopping-cart {
+            color: white;
+        }
+    }
 }
 
 h2 {

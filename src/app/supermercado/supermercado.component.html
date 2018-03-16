@@ -15,13 +15,22 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Buscar producto...">
+        <div class="input-group buscador">
+          <input 
+            type="text" 
+            class="form-control" 
+            [(ngModel)]="searchText"
+            name="buscador"
+            placeholder="Buscar producto..." 
+            aria-describedby="basic-addon2">
+          <span class="input-group-addon glyphicon glyphicon-search"></span>
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Carrito <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> 
+          </a>
           <ul class="dropdown-menu">
             <li><a href="#">Producto 1</a></li>
             <li><a href="#">Producto 2</a></li>
@@ -36,6 +45,8 @@
 
 <!-- Componente: RecetaDetalleComponent -->
 <h2>TOP 10 PRODUCTOS</h2>
-<div class="componente-producto" *ngFor="let producto of listaProductos">
+<!-- <p><b>Productos:</b> {{ listaProductos | json }}</p> -->
+<div class="componente-producto" *ngFor="let producto of listaProductos | filterProductos : searchText">
+  <!-- <p><b>Producto:</b> {{ producto | json }}</p> -->
   <app-producto [producto]="producto"></app-producto>
 </div>

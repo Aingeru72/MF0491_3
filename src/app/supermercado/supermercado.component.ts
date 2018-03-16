@@ -13,11 +13,13 @@ export class SupermercadoComponent implements OnInit {
   listaProductos: Producto[];
 
   constructor(public productosService: ProductosService) {
-    console.log('SupermercadoComponent.constructor()');
+    // console.log('SupermercadoComponent.constructor()');
   }
 
   ngOnInit() {
-    console.log('SupermercadoComponent.ngOnInit()');
+    // console.log('SupermercadoComponent.ngOnInit()');
+
+    // Obtener el stock de productos mediante el servicio 'productosService'
     this.listaProductos = this.productosService.getAll();
   }
 

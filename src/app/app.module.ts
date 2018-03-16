@@ -1,23 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
-// Services
-import { ProductosService } from './providers/productos.service';
+
 // Components
 import { AppComponent } from './app.component';
 import { SupermercadoComponent } from './supermercado/supermercado.component';
 import { ProductoComponent } from './supermercado/producto/producto.component';
-
+// Pipes/Filters
+import { FilterProductos } from './pipes/filter-productos.pipe';
+// Services
+import { ProductosService } from './providers/productos.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SupermercadoComponent,
-    ProductoComponent
+    ProductoComponent,
+    // Filters
+    FilterProductos
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [ProductosService],
   bootstrap: [AppComponent]
