@@ -35,6 +35,7 @@
 </nav>
 
 <!-- Componente: RecetaDetalleComponent -->
-<div class="catalogo-productos">
-  <app-producto></app-producto>
+<h2>TOP 10 PRODUCTOS</h2>
+<div class="componente-producto" *ngFor="let producto of listaProductos">
+  <app-producto [producto]="producto"></app-producto>
 </div>
