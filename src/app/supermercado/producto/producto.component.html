@@ -13,11 +13,11 @@
       <p class="precio-unidad">( {{producto.precioUnidad}} )</p>
       <p class="nombre-producto">{{producto.nombre}}</p>
       <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default">-</button>
-        <input type="text" class="btn btn-default cantidad" value="1" min="1" readonly>
-        <button type="button" class="btn btn-default">+</button>
+        <button type="button" class="btn btn-default" (click)="decUnidad()">-</button>
+        <input type="text" class="btn btn-default cantidad" value="1" [(ngModel)]="unidades" readonly>
+        <button type="button" class="btn btn-default" (click)="aumUnidad()">+</button>
       </div>
-      <p><a href="#" class="btn btn-success btn-block" role="button">AÑADIR AL CARRO</a></p>
+      <p><a href="#" class="btn btn-success btn-block" (click)="addToCart()" role="button">AÑADIR AL CARRO</a></p>
     </div>
   </div>
 </div>

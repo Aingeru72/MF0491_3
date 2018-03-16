@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Producto } from '../../model/producto';
 
 @Component({
@@ -10,13 +10,16 @@ export class ProductoComponent implements OnInit {
 
   // Atributos
   @Input('producto') producto: Producto;
+  @Output() productoAniadido = new EventEmitter();
   precioConDescuento: number;
+  unidades: number;
 
   constructor() {
     // console.log('ProductoComponent.constructor()');
 
     // Inidializar producto por defecto
     this.producto = new Producto('Producto');
+    this.unidades = 1;
   }
 
   ngOnInit() {
@@ -25,9 +28,40 @@ export class ProductoComponent implements OnInit {
     this.mostrarDescuento();
   }
 
+  /**
+   * Calcula el precio final con descuento aplicado
+   */
   mostrarDescuento() {
     // console.log('ProductoComponent.mostrarDescuento()');
     this.precioConDescuento = this.producto.precio - (this.producto.precio * (this.producto.oferta / 100));
+  }
+
+  /**
+   * Aumentar unidades del producto
+   */
+  aumUnidad() {
+    this.unidades++;
+  }
+
+  /**
+   * Decrecer unidades del producto
+   */
+  decUnidad() {
+    if (this.unidades > 1) {
+      this.unidades--;
+    }
+  }
+
+  /**
+   * Emite un evento al SupermercadoComponent (padre) con el producto y sus unidades
+   */
+  addToCart() {
+    console.log('ProductoComponent.addToCart(producto : %o y unidades : %s', this.producto, this.unidades);
+
+    this.productoAniadido.emit({
+      'producto': this.producto,
+      'unidades': this.unidades
+    });
   }
 
 }

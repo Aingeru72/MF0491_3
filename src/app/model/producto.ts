@@ -1,4 +1,4 @@
-/* Modelo de clase PRODUCTO para encapsular sus atributos */
+/* Modelo de clase de PRODUCTO */
 export class Producto {
 
     // atributos

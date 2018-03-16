@@ -8,9 +8,24 @@ nav.navbar-inverse {
         }
     }
     a.dropdown-toggle {
-        background-color: #88CC88;
+        background-color: #008C2E;
+        &:hover {
+            background-color: #88CC88;
+        }
+        .badge {
+            background-color: black;
+        }
         .glyphicon-shopping-cart {
             color: white;
+        }
+        .total-navegador {
+            color: white;
+            font-weight: 600;
+        }
+    }
+    ul.dropdown-menu {
+        .total-carrito {
+            background-color: darkgrey;
         }
     }
 }

@@ -12,6 +12,7 @@ import { ProductoComponent } from './supermercado/producto/producto.component';
 import { FilterProductos } from './pipes/filter-productos.pipe';
 // Services
 import { ProductosService } from './providers/productos.service';
+import { CarritoComponent } from './supermercado/carrito/carrito.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ProductosService } from './providers/productos.service';
     SupermercadoComponent,
     ProductoComponent,
     // Filters
-    FilterProductos
+    FilterProductos,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
