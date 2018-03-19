@@ -11,6 +11,7 @@ export class MOCK_PRODUCTOS {
             "precio": "1.00",
             "precioUnidad": "1 € / Barra",
             "oferta": 0,
+            "unidades": 1,
             "id": 1
         },
         {
@@ -19,6 +20,7 @@ export class MOCK_PRODUCTOS {
             "precio": 1.45,
             "precioUnidad": "1,45 € / Litro",
             "oferta": 10,
+            "unidades": 1,
             "id": 2
         },
         {
@@ -27,6 +29,7 @@ export class MOCK_PRODUCTOS {
             "precio": 5.30,
             "precioUnidad": "5.30 € / Litro",
             "oferta": 15,
+            "unidades": 1,
             "id": 3
         },
         {
@@ -35,6 +38,7 @@ export class MOCK_PRODUCTOS {
             "precio": "3.11",
             "precioUnidad": "12,44 € / Litro",
             "oferta": 0,
+            "unidades": 1,
             "id": 4
         },
         {
@@ -43,6 +47,7 @@ export class MOCK_PRODUCTOS {
             "precio": "1.52",
             "precioUnidad": "1,52 € / Kilo",
             "oferta": 0,
+            "unidades": 1,
             "id": 5
         },
         {
@@ -51,6 +56,7 @@ export class MOCK_PRODUCTOS {
             "precio": "4.03",
             "precioUnidad": "16,12 € / Kilo",
             "oferta": 0,
+            "unidades": 1,
             "id": 6
         },
         {
@@ -59,6 +65,7 @@ export class MOCK_PRODUCTOS {
             "precio": "0.96",
             "precioUnidad": "1,92 € / Kilo",
             "oferta": 0,
+            "unidades": 1,
             "id": 7
         },
         {
@@ -67,6 +74,7 @@ export class MOCK_PRODUCTOS {
             "precio": "2.59",
             "precioUnidad": "15,42 € / Kilo",
             "oferta": "20",
+            "unidades": 1,
             "id": 7
         },
         {
@@ -75,6 +83,7 @@ export class MOCK_PRODUCTOS {
             "precio": "15.92",
             "precioUnidad": "9,95 € / Kg",
             "oferta": 0,
+            "unidades": 1,
             "id": 8
         },
         {
@@ -83,6 +92,7 @@ export class MOCK_PRODUCTOS {
             "precio": "0.72",
             "precioUnidad": "0,72 € / Kilo",
             "oferta": 0,
+            "unidades": 1,
             "id": 9
         },
         {
@@ -91,6 +101,7 @@ export class MOCK_PRODUCTOS {
             "precio": "10.60",
             "precioUnidad": "0,88 € / Unidad",
             "oferta": 0,
+            "unidades": 1,
             "id": 10
         }
     ]`;

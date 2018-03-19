@@ -1,13 +1,13 @@
-<div class="producto-carrito row">
-  <div class="imagen col-xs-1">
+<div class="producto-carrito row" *ngFor="let prodCarrito of carrito">
+  <div class="imagen col-xs-2">
     <img src="{{prodCarrito.imagen}}" alt="{{prodCarrito.nombre}}">
   </div>
-  <div class="descripcion col-xs-7">
-    <p>{{prodCarrito.precio | number:'.2-2'}} €</p>
-    <p>{{prodCarrito.nombre}}</p>
+  <div class="descripcion col-xs-6">
+    <p class="precio"><b>{{prodCarrito.precio | number:'.2-2'}} €</b></p>
+    <p>{{prodCarrito.nombre}}</p> <!-- | slice:0:15 }}... -->
   </div>
   <div class="unidades descripcion col-xs-2">
-
+    <p>{{prodCarrito.unidades}}</p>
   </div>
   <div class="unidades borrar col-xs-2">
 

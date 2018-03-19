@@ -12,14 +12,14 @@ export class ProductoComponent implements OnInit {
   @Input('producto') producto: Producto;
   @Output() productoAniadido = new EventEmitter();
   precioConDescuento: number;
-  unidades: number;
+  // unidades: number;
 
   constructor() {
     // console.log('ProductoComponent.constructor()');
 
     // Inidializar producto por defecto
     this.producto = new Producto('Producto');
-    this.unidades = 1;
+    // this.unidades = 1;
   }
 
   ngOnInit() {
@@ -40,15 +40,15 @@ export class ProductoComponent implements OnInit {
    * Aumentar unidades del producto
    */
   aumUnidad() {
-    this.unidades++;
+    this.producto.unidades++;
   }
 
   /**
    * Decrecer unidades del producto
    */
   decUnidad() {
-    if (this.unidades > 1) {
-      this.unidades--;
+    if (this.producto.unidades > 1) {
+      this.producto.unidades--;
     }
   }
 
@@ -56,11 +56,11 @@ export class ProductoComponent implements OnInit {
    * Emite un evento al SupermercadoComponent (padre) con el producto y sus unidades
    */
   addToCart() {
-    console.log('ProductoComponent.addToCart(producto : %o y unidades : %s', this.producto, this.unidades);
+    // console.log('ProductoComponent.addToCart(producto : %o y unidades : %s', this.producto, this.unidades);
+    console.log('ProductoComponent.addToCart(%o :', this.producto);
 
     this.productoAniadido.emit({
-      'producto': this.producto,
-      'unidades': this.unidades
+      'producto': this.producto
     });
   }
 

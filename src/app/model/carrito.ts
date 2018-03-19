@@ -1,1 +1,0 @@
-/* Modelo de clase de CARRITO */

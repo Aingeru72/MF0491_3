@@ -8,6 +8,7 @@ export class Producto {
     precio: number;
     precioUnidad: string;
     oferta: number;
+    unidades: number;
     id: number;
 
     constructor(
@@ -17,6 +18,7 @@ export class Producto {
         precio: number = 0,
         precioUnidad: string = '',
         oferta: number = 0,
+        unidades: number = 1,
         id: number = -1,
     ) {
         console.log('Producto.constructor()');
@@ -27,6 +29,7 @@ export class Producto {
         this.precio = precio;
         this.precioUnidad = precioUnidad;
         this.oferta = oferta;
+        this.unidades = unidades;
         this.id = id;
     }
 

@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Supermercado</a>
+      <a class="navbar-brand" href="#">SUPERMERCADO</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -29,7 +29,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <span class="badge">{{carrito.length}}</span>
+            <span class="badge">{{cantCarrito}}</span>
             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
             <span class="total-navegador">{{total | number:'.2-2'}} €</span>
           </a>
@@ -38,12 +38,10 @@
                 <app-carrito [prodCarrito]="prodCarrito"></app-carrito>
             </li>
             <li role="separator" class="divider"></li>
-            <li>
-              <div class="total-carrito">
-                <p class="subtotal">Subtotal: <span>{{subtotal | number:'.2-2'}} €</span></p>
-                <p class="descuentos">Descuentos: <span>{{descuento}} 0 €</span></p>
-                <p class="total">Total: <span>{{total | number:'.2-2'}} €</span></p>
-              </div>
+            <li class="total-carrito">
+              <p class="subtotal">Subtotal: <span>{{subtotal | number:'.2-2'}} €</span></p>
+              <p class="descuentos">Descuento: <span>{{descuento | number:'.2-2'}} €</span></p>
+              <p class="total"><b>Total:</b> <span>{{total | number:'.2-2'}} €</span></p>
             </li>
           </ul>
         </li>

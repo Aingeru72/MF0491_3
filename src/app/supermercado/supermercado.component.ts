@@ -12,6 +12,8 @@ export class SupermercadoComponent implements OnInit {
   // Aritubutos
   listaProductos: Producto[];
   carrito: Producto[];
+  // unidades: number;
+  cantCarrito: number;
   subtotal: number;
   descuento: number;
   total: number;
@@ -20,6 +22,8 @@ export class SupermercadoComponent implements OnInit {
     // console.log('SupermercadoComponent.constructor()');
     this.listaProductos = [];
     this.carrito = [];
+    // this.unidades = 0;
+    this.cantCarrito = 0;
     this.subtotal = 0;
     this.descuento = 0;
     this.total = 0;
@@ -30,6 +34,8 @@ export class SupermercadoComponent implements OnInit {
 
     // Obtener el stock de productos mediante el servicio 'productosService'
     this.listaProductos = this.productosService.getAll();
+    // tslint:disable-next-line:no-console
+    console.debug('Lista de productos: %o', this.listaProductos);
   }
 
   /**
@@ -39,15 +45,17 @@ export class SupermercadoComponent implements OnInit {
   addToCart(event) {
     console.log('SupermercadoComponent.addToCart(%o)', event);
 
-    for (let i = 0; i < event.unidades; i++ ) {
-      this.carrito.push(event.producto);
+    for (let i = 0; i < event.producto.unidades; i++ ) {
+      this.cantCarrito++;
       if (event.producto.oferta) {
-        this.subtotal += + (event.producto.precio - (event.producto.precio * (event.producto.oferta / 100)));
+        this.total += + (event.producto.precio - (event.producto.precio * (event.producto.oferta / 100)));
       } else {
-        this.subtotal += + event.producto.precio;
+        this.total += + event.producto.precio;
       }
     }
-    this.total = this.subtotal;
+    this.carrito.push(event.producto);
+    this.subtotal += + event.producto.precio;
+    this.descuento = -this.total + this.subtotal;
   }
 
 }

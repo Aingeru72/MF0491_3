@@ -2,6 +2,7 @@
 
 nav.navbar-inverse {
     border-radius: 0;
+    padding-right: 20px;
     .buscador {
         .glyphicon-search {
             top: 0;
@@ -25,8 +26,23 @@ nav.navbar-inverse {
     }
     ul.dropdown-menu {
         width: 500px;
+        padding: 0;
+        .divider {
+            padding-bottom: 0;
+        }
         .total-carrito {
-            background-color: darkgrey;
+            background-color: #ddd;
+            padding: 10px;
+            p {
+                margin: 0;
+                padding: 2px 0 2px 0;
+                font-size: 1.2em;
+                text-align: right;
+                span {
+                    float: right;
+                    width: 80px;
+                }
+            }
         }
     }
 }
