@@ -40,6 +40,7 @@ export class ProductoComponent implements OnInit {
    * Aumentar unidades del producto
    */
   aumUnidad() {
+    console.log('ProductoComponent.aumUnidad(%s)', this.producto.unidades);
     this.producto.unidades++;
   }
 
@@ -47,6 +48,7 @@ export class ProductoComponent implements OnInit {
    * Decrecer unidades del producto
    */
   decUnidad() {
+    console.log('ProductoComponent.decUnidad(%s)', this.producto.unidades);
     if (this.producto.unidades > 1) {
       this.producto.unidades--;
     }

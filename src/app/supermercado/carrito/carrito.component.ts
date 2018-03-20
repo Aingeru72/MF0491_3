@@ -69,18 +69,18 @@ export class CarritoComponent implements OnInit {
    * Aumentar unidades del producto
    */
   aumUnidad() {
-    console.log('CarritoComponent.aumUnidad()');
     this.prodCarrito.unidades++;
+    console.log('ProductoComponent.aumUnidad(%s)', this.prodCarrito.unidades);
   }
 
   /**
    * Decrecer unidades del producto
    */
   decUnidad() {
-    console.log('CarritoComponent.decUnidad()');
     if (this.prodCarrito.unidades > 1) {
       this.prodCarrito.unidades--;
     }
+    console.log('ProductoComponent.decUnidad(%s)', this.prodCarrito.unidades);
   }
 
   /**

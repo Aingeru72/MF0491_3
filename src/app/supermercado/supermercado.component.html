@@ -37,7 +37,6 @@
             <li *ngFor="let prodCarrito of carrito">
                 <app-carrito [prodCarrito]="prodCarrito" (productoBorrado)='deleteFromCart($event)'></app-carrito>
             </li>
-            <li role="separator" class="divider"></li>
             <li class="total-carrito">
               <p class="subtotal">Subtotal: <span>{{subtotal | number:'.2-2'}} €</span></p>
               <p class="descuentos">Descuento: <span>{{descuento | number:'.2-2'}} €</span></p>
