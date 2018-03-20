@@ -34,8 +34,8 @@
             <span class="total-navegador">{{total | number:'.2-2'}} €</span>
           </a>
           <ul class="dropdown-menu" [style.visibility]="(cantCarrito)? 'visible' : 'hidden' ">
-            <li *ngFor="let prodCarrito of carrito">
-                <app-carrito [prodCarrito]="prodCarrito" (productoBorrado)='deleteFromCart($event)'></app-carrito>
+            <li>
+              <app-carrito [carrito]="carrito" (productoBorrado)='deleteFromCart($event)'></app-carrito>
             </li>
             <li class="total-carrito">
               <p class="subtotal">Subtotal: <span>{{subtotal | number:'.2-2'}} €</span></p>

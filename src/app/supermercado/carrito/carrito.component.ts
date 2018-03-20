@@ -10,14 +10,15 @@ import { ProductoCarrito } from '../../model/producto-carrito';
 export class CarritoComponent implements OnInit {
 
   // Atributos
-  @Input('prodCarrito') prodCarrito: Producto;
+  @Input('carrito') carrito: Producto[];
   @Output() productoBorrado = new EventEmitter();
-  carrito: Producto[];
+  listaCarrito: Producto[];
+  prodCarrito: Producto;
 
   constructor() {
     console.log('CarritoComponent.constructor()');
     this.prodCarrito = new Producto('Producto');
-    this.carrito = new Array;
+    this.carrito = [];
   }
 
   ngOnInit() {
@@ -25,28 +26,33 @@ export class CarritoComponent implements OnInit {
   }
 
   rellenarCarrito() {
-    // Obtener la posición del producto en caso de contener ya ese tipo de producto
-    const index = this.contieneProducto(this.prodCarrito);
+
     let nuevoProducto;
 
-    if ( index !== -1  ) {
-      // Añadir una unidad a ese producto
-      this.carrito[index].unidades++;
-    } else {
-      // Añadir ese producto al carritp
-      nuevoProducto = new Producto(
-        this.prodCarrito.nombre,
-        this.prodCarrito.imagen,
-        this.prodCarrito.precio,
-        this.prodCarrito.precioUnidad,
-        this.prodCarrito.oferta,
-        this.prodCarrito.unidades,
-        this.prodCarrito.id
+    this.carrito.forEach(element => {
+      // Obtener la posición del producto en caso de contener ya ese tipo de producto
+      const index = this.contieneProducto(element);
+
+      if ( index !== -1  ) {
+        nuevoProducto = new Producto(
+          element.nombre,
+          element.imagen,
+          element.precio,
+          element.precioUnidad,
+          element.oferta,
+          element.unidades,
+          element.id
+        );
+        this.carrito.push(nuevoProducto);
+      } else {
+        this.carrito[index].unidades += element.unidades;
+      }
+      // tslint:disable-next-line:no-console
+      console.debug(
+        'Carrito: %o', this.carrito + '\n' +
+        'Nuevo Producto añadido: %o', nuevoProducto
       );
-      this.carrito.push(nuevoProducto);
-    }
-    // tslint:disable-next-line:no-console
-    console.debug('Carrito: %o', this.carrito);
+    });
   }
 
   /**
@@ -69,7 +75,7 @@ export class CarritoComponent implements OnInit {
    * Aumentar unidades del producto
    */
   aumUnidad() {
-    this.prodCarrito.unidades++;
+    // this.prodCarrito.unidades++;
     console.log('ProductoComponent.aumUnidad(%s)', this.prodCarrito.unidades);
   }
 
@@ -77,9 +83,9 @@ export class CarritoComponent implements OnInit {
    * Decrecer unidades del producto
    */
   decUnidad() {
-    if (this.prodCarrito.unidades > 1) {
+    /* if (this.prodCarrito.unidades > 1) {
       this.prodCarrito.unidades--;
-    }
+    } */
     console.log('ProductoComponent.decUnidad(%s)', this.prodCarrito.unidades);
   }
 
@@ -89,12 +95,12 @@ export class CarritoComponent implements OnInit {
    */
   borrarDelCarrito(prodCarrito: Producto): void {
     // tslint:disable-next-line:no-console
-    console.debug('CarritoComponent.borrarDelCarrito(%o)', prodCarrito);
+    /* console.debug('CarritoComponent.borrarDelCarrito(%o)', prodCarrito);
     const index = this.contieneProducto(prodCarrito);
     this.carrito.splice(index, 1);
     this.productoBorrado.emit({
       'producto': this.prodCarrito
-    });
+    }); */
 
   }
 

@@ -11,6 +11,10 @@ export class ProductoCarrito {
         producto: Producto,
         unidades: number = 0
     ) {
+        console.log(
+            'ProductoCarrito.constructor(%o', producto + '\n' +
+            'unidades %s', + unidades
+        );
         this.producto = producto;
         this.unidades = unidades;
     }
