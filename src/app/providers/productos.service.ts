@@ -30,7 +30,7 @@ export class ProductosService {
         element.precio,
         element.precioUnidad,
         element.oferta,
-        element.unidades,
+        // element.unidades,
         element.id
       );
 

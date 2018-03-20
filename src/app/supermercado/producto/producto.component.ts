@@ -12,14 +12,14 @@ export class ProductoComponent implements OnInit {
   @Input('producto') producto: Producto;
   @Output() productoAniadido = new EventEmitter();
   precioConDescuento: number;
-  // unidades: number;
+  unidades: number;
 
   constructor() {
     // console.log('ProductoComponent.constructor()');
 
     // Inidializar producto por defecto
     this.producto = new Producto('Producto');
-    // this.unidades = 1;
+    this.unidades = 1;
   }
 
   ngOnInit() {
@@ -40,17 +40,17 @@ export class ProductoComponent implements OnInit {
    * Aumentar unidades del producto
    */
   aumUnidad() {
-    console.log('ProductoComponent.aumUnidad(%s)', this.producto.unidades);
-    this.producto.unidades++;
+    console.log('ProductoComponent.aumUnidad(%s)', this.unidades + 1);
+    this.unidades++;
   }
 
   /**
    * Decrecer unidades del producto
    */
   decUnidad() {
-    console.log('ProductoComponent.decUnidad(%s)', this.producto.unidades);
-    if (this.producto.unidades > 1) {
-      this.producto.unidades--;
+    console.log('ProductoComponent.decUnidad(%s)', this.unidades - 1);
+    if (this.unidades > 1) {
+      this.unidades--;
     }
   }
 
@@ -59,10 +59,13 @@ export class ProductoComponent implements OnInit {
    */
   addToCart() {
     // console.log('ProductoComponent.addToCart(producto : %o y unidades : %s', this.producto, this.unidades);
-    console.log('ProductoComponent.addToCart(%o :', this.producto);
+    console.log('ProductoComponent.addToCart()');
+    // tslint:disable-next-line:no-console
+    console.debug('producto %o', this.producto, ' unidades: ', this.unidades);
 
     this.productoAniadido.emit({
-      'producto': this.producto
+      'producto': this.producto,
+      'unidades': this.unidades
     });
   }
 

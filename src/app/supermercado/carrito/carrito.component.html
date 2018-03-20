@@ -1,20 +1,19 @@
-<div class="producto-carrito row" *ngFor="let prodCarrito of carrito">
+<div class="producto-carrito row" *ngFor="let prodCarrito of listaCompra">
   <div class="imagen col-xs-2">
-    <img src="{{prodCarrito.imagen}}" alt="{{prodCarrito.nombre}}">
+    <img src="{{prodCarrito.producto.imagen}}" alt="{{prodCarrito.producto.nombre}}">
   </div>
   <div class="descripcion col-xs-6">
-    <p class="precio"><b>{{prodCarrito.precio | number:'.2-2'}} €</b></p>
-    <p>{{prodCarrito.nombre | slice:0:35 }}</p>
+    <p class="precio"><b>{{prodCarrito.producto.precio | number:'.2-2'}} €</b></p>
+    <p>{{prodCarrito.producto.nombre | slice:0:35 }}</p>
   </div>
-  <!-- FIXME: aum/dec cantidad de unidades -->
   <div class="btn-group unidades col-xs-2" role="group">
-    <button type="button" class="btn btn-default" (click)="decUnidad()">-</button>
+    <button type="button" class="btn btn-default" (click)="decUnidad($event)" title="disminuir unidades del producto">-</button>
     <input type="text" class="btn btn-default cantidad" [(ngModel)]="prodCarrito.unidades" readonly>
-    <button type="button" class="btn btn-default" (click)="aumUnidad()">+</button>
+    <button type="button" class="btn btn-default" (click)="aumUnidad(this.productoAniadido)" title="aumentar unidades del producto">+</button>
   </div>
   <div class="borrar col-xs-1">
-    <button (click)="borrarDelCarrito(this.prodCarrito)" (productoBorrado)='deleteFromCart(this.prodCarrito)'>
-    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    <button class="btn btn-default" (click)="borrarDelCarrito(this.prodCarrito)" (productoBorrado)='deleteFromCart(this.prodCarrito)'>
+    <span class="glyphicon glyphicon-trash" aria-hidden="true" title="borrar elemento del carrito"></span>
   </button>
   </div>
 </div>

@@ -10,31 +10,35 @@ import { ProductoCarrito } from '../../model/producto-carrito';
 export class CarritoComponent implements OnInit {
 
   // Atributos
-  @Input('carrito') carrito: Producto[];
+  @Input('productoAniadido') productoAniadido: ProductoCarrito;
+  @Output() productoIncrementado = new EventEmitter();
+  @Output() productoDecrementado = new EventEmitter();
   @Output() productoBorrado = new EventEmitter();
-  listaCarrito: Producto[];
-  prodCarrito: Producto;
+  listaCompra: ProductoCarrito[];
 
   constructor() {
-    console.log('CarritoComponent.constructor()');
-    this.prodCarrito = new Producto('Producto');
-    this.carrito = [];
+    console.log('CarritoComponent.constructor(%o)', this.productoAniadido);
+    this.productoAniadido = new ProductoCarrito(new Producto('Producto'), 1);
+    this.listaCompra = [];
   }
 
   ngOnInit() {
+    console.log('CarritoComponent.ngOnInit()');
     this.rellenarCarrito();
+    // tslint:disable-next-line:no-console
+    console.debug('listaCompra: %o', this.listaCompra);
   }
 
   rellenarCarrito() {
 
-    let nuevoProducto;
+    this.listaCompra.push(this.productoAniadido);
 
-    this.carrito.forEach(element => {
+    /* this.listaCompra.forEach(element => {
       // Obtener la posición del producto en caso de contener ya ese tipo de producto
       const index = this.contieneProducto(element);
 
       if ( index !== -1  ) {
-        nuevoProducto = new Producto(
+        this.prodCarrito = new Producto(
           element.nombre,
           element.imagen,
           element.precio,
@@ -52,14 +56,14 @@ export class CarritoComponent implements OnInit {
         'Carrito: %o', this.carrito + '\n' +
         'Nuevo Producto añadido: %o', nuevoProducto
       );
-    });
+    }); */
   }
 
   /**
    * Devuelve la posición del nuevo producto en el carrito, o '-1' si no lo encuentra
    * @param prodCarrito : Producto nuevo a añadir
    */
-  contieneProducto(prodCarrito: Producto): number {
+  /* contieneProducto(prodCarrito: Producto): number {
     let indice = -1;
 
     this.carrito.forEach((element, index) => {
@@ -69,39 +73,47 @@ export class CarritoComponent implements OnInit {
     });
 
     return indice;
-  }
+  } */
 
   /**
    * Aumentar unidades del producto
    */
-  aumUnidad() {
-    // this.prodCarrito.unidades++;
-    console.log('ProductoComponent.aumUnidad(%s)', this.prodCarrito.unidades);
+  aumUnidad(event) {
+    this.productoAniadido.unidades++;
+    console.log('ProductoComponent.aumUnidad(%s)', event.unidades);
+
+    this.productoIncrementado.emit({
+      'producto': this.productoAniadido.producto,
+      'unidades': this.productoAniadido.unidades
+    });
   }
 
   /**
    * Decrecer unidades del producto
    */
-  decUnidad() {
-    /* if (this.prodCarrito.unidades > 1) {
-      this.prodCarrito.unidades--;
-    } */
-    console.log('ProductoComponent.decUnidad(%s)', this.prodCarrito.unidades);
+  decUnidad(event) {
+    this.productoAniadido.unidades--;
+    console.log('ProductoComponent.decUnidad(%s)', event.unidades);
+
+    this.productoDecrementado.emit({
+      'producto': this.productoAniadido.producto,
+      'unidades': this.productoAniadido.unidades
+    });
   }
 
   /**
    * Borra el elemento seleccionado de la lista desplegable del carrito
    * @param prodCarrito : Producto a borrar
    */
-  borrarDelCarrito(prodCarrito: Producto): void {
-    // tslint:disable-next-line:no-console
-    /* console.debug('CarritoComponent.borrarDelCarrito(%o)', prodCarrito);
+  /* borrarDelCarrito(prodCarrito: Producto): void {
+    console.log('CarritoComponent.borrarDelCarrito(%o)', prodCarrito);
+
     const index = this.contieneProducto(prodCarrito);
     this.carrito.splice(index, 1);
     this.productoBorrado.emit({
       'producto': this.prodCarrito
-    }); */
+    });
 
-  }
+  } */
 
 }

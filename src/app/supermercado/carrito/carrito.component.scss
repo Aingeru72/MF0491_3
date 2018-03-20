@@ -32,10 +32,19 @@
     }
     .borrar {
         height: 100%;
-        margin-top: 21px;
-        padding-left: 5px;
-        .glyphicon-trash {
-            height: 100%;
+        display: flex;
+        justify-content: center;
+        top: 16px;
+        right: 5px;
+        /* margin-top: 21px;
+        padding-left: 5px; */
+        button {
+            margin-top: 3px;
+            padding: 5px 5px 2px 5px;
+            .glyphicon-trash {
+                height: 100%;
+            }
         }
+        
     }
 }
