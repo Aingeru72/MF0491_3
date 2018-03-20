@@ -17,10 +17,25 @@
         }
     }
     .unidades {
-        font-size: 2em;
+        // CHANGES: añadido button-group para incrementar/decrementar
+        /* font-size: 2em;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center; */
+        margin: 20px 0 20px 0;
+        .btn {
+            padding: 3px;
+        }
+        .cantidad {
+            width: 50%;
+        }
     }
-    
+    .borrar {
+        height: 100%;
+        margin-top: 21px;
+        padding-left: 5px;
+        .glyphicon-trash {
+            height: 100%;
+        }
+    }
 }

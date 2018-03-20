@@ -40,22 +40,58 @@ export class SupermercadoComponent implements OnInit {
 
   /**
    * Añade el producto recibido de ProductoComponent tantas veces se especificó en sus unidades
-   * @param event : objeto recibido con el producto y su número de unidades
+   * @param event : objeto recibido con el producto a añadir al carrito
    */
   addToCart(event) {
     console.log('SupermercadoComponent.addToCart(%o)', event);
 
-    for (let i = 0; i < event.producto.unidades; i++ ) {
+    const descuento = (event.producto.precio * (event.producto.oferta / 100)) * event.producto.unidades;
+
+    /* for (let i = 0; i < event.producto.unidades; i++ ) {
       this.cantCarrito++;
       if (event.producto.oferta) {
         this.total += + (event.producto.precio - (event.producto.precio * (event.producto.oferta / 100)));
       } else {
         this.total += + event.producto.precio;
       }
+    } */
+    this.subtotal += + event.producto.precio * event.producto.unidades;
+    if (event.producto.oferta) {
+      this.descuento += + descuento;
     }
+    this.total = this.subtotal - this.descuento;
+    // tslint:disable-next-line:no-console
+    console.debug(`
+      subtotal: ${event.producto.precio * event.producto.unidades} \n
+      descuento: ${(event.producto.precio * (event.producto.oferta / 100)) * event.producto.unidades} \n
+      total: ${this.total}
+    `);
+    this.cantCarrito += 1 * event.producto.unidades;
     this.carrito.push(event.producto);
-    this.subtotal += + event.producto.precio;
-    this.descuento = -this.total + this.subtotal;
+  }
+
+  /**
+   * Método para borrar un producto del carrito
+   * @param event : evento que transmite CarritoComponente con el 'producto' eliminado
+   */
+  deleteFromCart(event): void {
+    // tslint:disable-next-line:no-console
+    console.debug('SupermercadoComponent.deleteFromCart(%o)', event.producto);
+
+    const descuento = (event.producto.precio * (event.producto.oferta / 100)) * event.producto.unidades;
+
+    this.subtotal -= event.producto.precio * event.producto.unidades;
+    if (event.producto.oferta) {
+      this.descuento -= descuento;
+    }
+    this.total = this.subtotal - this.descuento;
+    // tslint:disable-next-line:no-console
+    console.debug(`
+      subtotal: ${event.producto.precio * event.producto.unidades} \n
+      descuento: ${(event.producto.precio * (event.producto.oferta / 100)) * event.producto.unidades} \n
+      total: ${this.total}
+    `);
+    this.cantCarrito -= 1 * event.producto.unidades;
   }
 
 }

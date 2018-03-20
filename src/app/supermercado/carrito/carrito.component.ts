@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Producto } from '../../model/producto';
 import { ProductoCarrito } from '../../model/producto-carrito';
 
@@ -11,6 +11,7 @@ export class CarritoComponent implements OnInit {
 
   // Atributos
   @Input('prodCarrito') prodCarrito: Producto;
+  @Output() productoBorrado = new EventEmitter();
   carrito: Producto[];
 
   constructor() {
@@ -62,6 +63,39 @@ export class CarritoComponent implements OnInit {
     });
 
     return indice;
+  }
+
+  /**
+   * Aumentar unidades del producto
+   */
+  aumUnidad() {
+    console.log('CarritoComponent.aumUnidad()');
+    this.prodCarrito.unidades++;
+  }
+
+  /**
+   * Decrecer unidades del producto
+   */
+  decUnidad() {
+    console.log('CarritoComponent.decUnidad()');
+    if (this.prodCarrito.unidades > 1) {
+      this.prodCarrito.unidades--;
+    }
+  }
+
+  /**
+   * Borra el elemento seleccionado de la lista desplegable del carrito
+   * @param prodCarrito : Producto a borrar
+   */
+  borrarDelCarrito(prodCarrito: Producto): void {
+    // tslint:disable-next-line:no-console
+    console.debug('CarritoComponent.borrarDelCarrito(%o)', prodCarrito);
+    const index = this.contieneProducto(prodCarrito);
+    this.carrito.splice(index, 1);
+    this.productoBorrado.emit({
+      'producto': this.prodCarrito
+    });
+
   }
 
 }

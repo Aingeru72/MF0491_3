@@ -6,10 +6,14 @@
     <p class="precio"><b>{{prodCarrito.precio | number:'.2-2'}} €</b></p>
     <p>{{prodCarrito.nombre}}</p> <!-- | slice:0:15 }}... -->
   </div>
-  <div class="unidades descripcion col-xs-2">
-    <p>{{prodCarrito.unidades}}</p>
+  <div class="btn-group unidades col-xs-2" role="group">
+    <button type="button" class="btn btn-default" (click)="decUnidad()">-</button>
+    <input type="text" class="btn btn-default cantidad" value="1" [(ngModel)]="prodCarrito.unidades" readonly>
+    <button type="button" class="btn btn-default" (click)="aumUnidad()">+</button>
   </div>
-  <div class="unidades borrar col-xs-2">
-
+  <div class="borrar col-xs-1">
+    <button (click)="borrarDelCarrito(this.prodCarrito)" (productoBorrado)='deleteFromCart(this.prodCarrito)'>
+    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+  </button>
   </div>
 </div>
