@@ -2,66 +2,74 @@
 
 // Variables
 $color-text: #8E8E8E;
-
-.thumbnail {
-
-    position: relative;
-    .img-producto {
-        height: 200px;
-        width: 80%;
-        padding: 10px;
-    }
-    .burubuja-oferta {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        width: 40px;
-        height: auto;
-        background-color: #ED5A5A;
-        color: white;
-        font-weight: 600;
-        font-size: 1.2em;
-        border-radius: 25px;
-        padding: 5px;
-    }
-    .oferta {
-        display: flex;
-        align-items: flex-end;
-        .precio-tachado {
-            text-decoration: line-through;
-            font-size: 1.4em;        
+.producto-componente {
+    height: 470px;
+    .thumbnail {
+        position: relative;
+        .contenedor-imagen {
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .img-producto {
+                
+                width: 80%;
+                padding: 10px;
+            }
+        }
+        .burubuja-oferta {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 40px;
+            height: auto;
+            background-color: #ED5A5A;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2em;
+            border-radius: 25px;
+            padding: 5px;
+        }
+        .oferta {
+            display: flex;
+            align-items: flex-end;
+            .precio-tachado {
+                text-decoration: line-through;
+                font-size: 1.4em;        
+                color: $color-text;
+            }
+            .precio-con-descuento {
+                color: #ED5A5A;
+                margin-left: 10px;
+            }
+        }
+        .precio-unidad {
             color: $color-text;
         }
-        .precio-con-descuento {
-            color: #ED5A5A;
-            margin-left: 10px;
+        .nombre-producto {
+            font-size: 0.9em;
+            height: 40px;
+            overflow: hidden;
+            color: $color-text;
         }
-    }
-    .precio-unidad {
-        color: $color-text;
-    }
-    .nombre-producto {
-        font-size: 0.9em;
-        height: 40px;
-        overflow: hidden;
-        color: $color-text;
-    }
-    .btn-group {
-        margin: 10px;
-        display: flex;
-        justify-content: center;
-        .cantidad {
-            width: 20%;
+        .btn-group {
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            .cantidad {
+                padding: 5px;
+                width: 20%;
+            }
         }
-    }
-    /* .add-carro {
-        background-color: #88cc88;
-        width: 100%;
-        height: 50px;
-        text-align: center;
-        vertical-align: center;
-    } */
+        /* .add-carro {
+            background-color: #88cc88;
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            vertical-align: center;
+        } */
 
+    }
 }
 
 #modal-imagen {
