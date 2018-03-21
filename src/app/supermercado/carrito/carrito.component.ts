@@ -31,49 +31,14 @@ export class CarritoComponent implements OnInit {
 
   rellenarCarrito() {
 
-    this.listaCompra.push(this.productoAniadido);
-
-    /* this.listaCompra.forEach(element => {
-      // Obtener la posición del producto en caso de contener ya ese tipo de producto
-      const index = this.contieneProducto(element);
-
-      if ( index !== -1  ) {
-        this.prodCarrito = new Producto(
-          element.nombre,
-          element.imagen,
-          element.precio,
-          element.precioUnidad,
-          element.oferta,
-          element.unidades,
-          element.id
-        );
-        this.carrito.push(nuevoProducto);
-      } else {
-        this.carrito[index].unidades += element.unidades;
-      }
-      // tslint:disable-next-line:no-console
-      console.debug(
-        'Carrito: %o', this.carrito + '\n' +
-        'Nuevo Producto añadido: %o', nuevoProducto
-      );
-    }); */
+    // TODO: aumenar unidades del producto en la listaCompra cuando ya existe en ella
+    /* const index = this.contieneProducto(this.productoAniadido.producto);
+    if ( index === -1 ) { */
+      this.listaCompra.push(this.productoAniadido);
+    // } else {
+    //   this.listaCompra[index].unidades += this.productoAniadido.unidades;
+    // }
   }
-
-  /**
-   * Devuelve la posición del nuevo producto en el carrito, o '-1' si no lo encuentra
-   * @param prodCarrito : Producto nuevo a añadir
-   */
-  /* contieneProducto(prodCarrito: Producto): number {
-    let indice = -1;
-
-    this.carrito.forEach((element, index) => {
-      if (element === prodCarrito) {
-        indice = index;
-      }
-    });
-
-    return indice;
-  } */
 
   /**
    * Aumentar unidades del producto
@@ -92,28 +57,52 @@ export class CarritoComponent implements OnInit {
    * Decrecer unidades del producto
    */
   decUnidad(event) {
-    this.productoAniadido.unidades--;
-    console.log('ProductoComponent.decUnidad(%s)', event.unidades);
+    if ( this.productoAniadido.unidades > 1) {
+      this.productoAniadido.unidades--;
+      console.log('ProductoComponent.decUnidad(%s)', event.unidades);
 
-    this.productoDecrementado.emit({
-      'producto': this.productoAniadido.producto,
-      'unidades': this.productoAniadido.unidades
-    });
+      this.productoDecrementado.emit({
+        'producto': this.productoAniadido.producto,
+        'unidades': this.productoAniadido.unidades
+      });
+    } else {
+      this.borrarDelCarrito(this.productoAniadido);
+    }
   }
 
   /**
    * Borra el elemento seleccionado de la lista desplegable del carrito
    * @param prodCarrito : Producto a borrar
    */
-  /* borrarDelCarrito(prodCarrito: Producto): void {
+  borrarDelCarrito(prodCarrito: ProductoCarrito): void {
     console.log('CarritoComponent.borrarDelCarrito(%o)', prodCarrito);
 
-    const index = this.contieneProducto(prodCarrito);
-    this.carrito.splice(index, 1);
-    this.productoBorrado.emit({
-      'producto': this.prodCarrito
+    const index = this.contieneProducto(prodCarrito.producto);
+    if ( index !== -1 ) {
+      // Borrar de la lista del carrito
+      this.listaCompra.splice(index, 1);
+      // TODO: Emitir al SupermercadoComponente para actualizar el valor del carrito
+      /* this.productoBorrado.emit({
+        'producto': this.prodCarrito
+      }); */
+    }
+
+  }
+
+  /**
+   * Devuelve la posición del nuevo producto en el carrito, o '-1' si no lo encuentra
+   * @param prodCarrito : Producto nuevo a añadir
+   */
+  contieneProducto(prodCarrito: Producto): number {
+    let indice = -1;
+
+    this.listaCompra.forEach((element, index) => {
+      if (element.producto === prodCarrito) {
+        indice = index;
+      }
     });
 
-  } */
+    return indice;
+  }
 
 }
