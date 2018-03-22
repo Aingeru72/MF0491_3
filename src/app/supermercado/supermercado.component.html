@@ -47,6 +47,9 @@
               <p class="descuentos">Descuento: <span>{{descuento | number:'.2-2'}} €</span></p>
               <p class="total"><b>Total:</b> <span>{{total | number:'.2-2'}} €</span></p>
             </li>
+            <li>
+              <button class="btn btn-danger btn-block" (click)="clearCarrito()">Limpiar carrito</button>
+            </li>
           </ul>
         </li>
       </ul>

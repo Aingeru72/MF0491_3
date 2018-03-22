@@ -160,4 +160,15 @@ export class SupermercadoComponent implements OnInit {
     this.carrito.splice(posicion, 1);
   }
 
+  /**
+   * Vacia el carrito de la compra
+   */
+  clearCarrito() {
+    this.carrito = [];
+    this.subtotal = 0;
+    this.descuento = 0;
+    this.total = 0;
+    this.cantCarrito = 0;
+  }
+
 }
