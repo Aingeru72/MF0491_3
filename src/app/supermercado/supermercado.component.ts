@@ -67,7 +67,7 @@ export class SupermercadoComponent implements OnInit {
 
   /**
    * Comprueba si el producto ya existe en el carrito: TRUE: retona su posición | FALSE: retorna -1
-   * @param producto : producto a añadir al carrito
+   * @param producto : producto en el carrito
    */
   contieneProducto(producto: ProductoCarrito): number {
     let encontrado = false;
@@ -153,9 +153,11 @@ export class SupermercadoComponent implements OnInit {
    */
   deleteFromCart(event): void {
     console.log('SupermercadoComponent.deleteFromCart(%o)', event.producto);
+    const posicion = this.contieneProducto(event.productoBorrado);
 
     this.dismCarrito(event.productoBorrado.producto, event.productoBorrado.unidades);
     this.cantCarrito -= 1 * event.productoBorrado.unidades;
+    this.carrito.splice(posicion, 1);
   }
 
 }
