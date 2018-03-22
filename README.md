@@ -1,27 +1,15 @@
-# AingeruPalazueloSanchez
+# Supermercado
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.1.
+Supermercado con productos cargados de un mock que se pueden filtrar, añadir, modificar y borrar del carrito.
 
-## Development server
+![Supermercado](https://github.com/Aingeru72/MF0491_3/blob/master/capturas/screenshot.png)
+-- *imagen 1* --
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Este proyecto ha sido desarrollado en Angular 2 (v2.5).
 
-## Code scaffolding
+## How to use
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Ejectura `npm install` para instalar las dependencias necesarias alojadas en `node_modules`.
+Ejecuta `ng serve --o` para lanzar un servidor de desarrollo en `http://localhost:4200/`. La app se actualizará automáticamente al guardar el proyecto.
+Este proyecto ha sido generado mediante la versión 1.7.1 de [Angular CLI](https://github.com/angular/angular-cli)
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
