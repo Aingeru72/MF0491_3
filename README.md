@@ -9,7 +9,7 @@ Este proyecto ha sido desarrollado en Angular 2 (v2.5).
 
 ## Versiones
 
-* **Tag 0.1** : Supermercado: filtra, añade, modifica unidades y borra productos.
+* **Tag 1.0** : Supermercado: filtra, añade, modifica unidades y borra productos.
 
 ## How to use
 

@@ -10,9 +10,6 @@ nav.navbar-inverse {
     }
     a.dropdown-toggle {
         background-color: #008C2E;
-        &:hover {
-            background-color: #88CC88;
-        }
         .badge {
             background-color: orangered;
         }
@@ -23,6 +20,9 @@ nav.navbar-inverse {
             color: white;
             font-weight: 600;
         }
+    }
+    a.dropdown-toggle[aria-expanded="true"] {
+        background-color: #88CC88;
     }
     ul.dropdown-menu {
         width: 500px;
