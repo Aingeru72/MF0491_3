@@ -67,6 +67,8 @@ export class ProductoComponent implements OnInit {
       'producto': this.producto,
       'unidades': this.unidades
     });
+    // Reiniciar unidades del producto añadido
+    this.unidades = 1;
   }
 
 }

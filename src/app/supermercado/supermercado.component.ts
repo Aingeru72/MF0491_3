@@ -45,6 +45,8 @@ export class SupermercadoComponent implements OnInit {
    * @param event : objeto recibido con el producto a añadir al carrito
    */
   addToCart(event): void {
+    let posicion = -1;
+
     console.log('SupermercadoComponent.addToCart(%o)', event);
     this.productoAniadido = new ProductoCarrito(event.producto, event.unidades);
     // tslint:disable-next-line:no-console
@@ -52,7 +54,35 @@ export class SupermercadoComponent implements OnInit {
 
     this.aumCarrito(event.producto, event.unidades);
     this.cantCarrito += 1 * event.unidades;
-    this.carrito.push(this.productoAniadido);
+    // Comprobar si ya existe el producto en el carrito, en tal caso: aumentar las unidades
+    posicion = this.contieneProducto(this.productoAniadido);
+    if ( posicion === -1 ) {
+      // Añadir nuevo producto al carrito
+      this.carrito.push(this.productoAniadido);
+    } else {
+      // Aumentar unidades del producto ya existente en el carrito
+      this.carrito[posicion].unidades += this.productoAniadido.unidades;
+    }
+  }
+
+  /**
+   * Comprueba si el producto ya existe en el carrito: TRUE: retona su posición | FALSE: retorna -1
+   * @param producto : producto a añadir al carrito
+   */
+  contieneProducto(producto: ProductoCarrito): number {
+    let encontrado = false;
+    let i = -1;
+
+    while ( !encontrado && (i + 1 < this.carrito.length) ) {
+      i++;
+      if ( this.carrito[i].producto.id === producto.producto.id ) {
+        encontrado = true;
+      }
+    }
+    if (!encontrado) {
+      i = -1;
+    }
+    return i;
   }
 
   /**
@@ -124,8 +154,8 @@ export class SupermercadoComponent implements OnInit {
   deleteFromCart(event): void {
     console.log('SupermercadoComponent.deleteFromCart(%o)', event.producto);
 
-    this.dismCarrito(event.producto, event.unidades);
-    this.cantCarrito -= 1 * event.producto.unidades;
+    this.dismCarrito(event.productoBorrado.producto, event.productoBorrado.unidades);
+    this.cantCarrito -= 1 * event.productoBorrado.unidades;
   }
 
 }

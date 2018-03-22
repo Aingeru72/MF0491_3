@@ -29,15 +29,12 @@ export class CarritoComponent implements OnInit {
     console.debug('listaCompra: %o', this.listaCompra);
   }
 
+  /**
+   * Añade el producto recien añadido al carrito y lo muestra
+   */
   rellenarCarrito() {
-
-    // TODO: aumenar unidades del producto en la listaCompra cuando ya existe en ella
-    /* const index = this.contieneProducto(this.productoAniadido.producto);
-    if ( index === -1 ) { */
-      this.listaCompra.push(this.productoAniadido);
-    // } else {
-    //   this.listaCompra[index].unidades += this.productoAniadido.unidades;
-    // }
+    console.log('CarritoComponent.rellenarCarrito()');
+    this.listaCompra.push(this.productoAniadido);
   }
 
   /**
@@ -82,9 +79,9 @@ export class CarritoComponent implements OnInit {
       // Borrar de la lista del carrito
       this.listaCompra.splice(index, 1);
       // TODO: Emitir al SupermercadoComponente para actualizar el valor del carrito
-      /* this.productoBorrado.emit({
-        'producto': this.prodCarrito
-      }); */
+      this.productoBorrado.emit({
+        'productoBorrado': prodCarrito
+      });
     }
 
   }
