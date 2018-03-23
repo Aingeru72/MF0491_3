@@ -78,7 +78,7 @@ export class CarritoComponent implements OnInit {
     if ( index !== -1 ) {
       // Borrar de la lista del carrito
       this.listaCompra.splice(index, 1);
-      // TODO: Emitir al SupermercadoComponente para actualizar el valor del carrito
+      // Emitir al SupermercadoComponente para actualizar el valor del carrito
       this.productoBorrado.emit({
         'productoBorrado': prodCarrito
       });
